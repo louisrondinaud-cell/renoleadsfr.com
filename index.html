@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RénoLeads — Trouvez un artisan qualifié</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<script charset="utf-8" type="text/javascript" src="//js-eu1.hsforms.net/forms/embed/v2.js"></script>
+<style>
+  :root {
+    --noir: #0a0a0a; --blanc: #f5f2ec; --or: #c8a84b; --or-clair: #e8c96a;
+    --gris: #1a1a1a; --texte-doux: #a0998a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--noir); color: var(--blanc); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 4rem; background: rgba(10,10,10,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(200,168,75,0.15); }
+  .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; letter-spacing: -0.02em; color: var(--blanc); text-decoration: none; }
+  .logo span { color: var(--or); }
+  nav ul { list-style: none; display: flex; gap: 2.5rem; }
+  nav ul a { color: var(--texte-doux); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.3s; }
+  nav ul a:hover { color: var(--or); }
+
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 8rem 2rem 4rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(200,168,75,0.1) 0%, transparent 70%); pointer-events: none; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(200,168,75,0.1); border: 1px solid rgba(200,168,75,0.3); color: var(--or); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.4rem 1rem; margin-bottom: 2rem; }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--or); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+  h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 1.5rem; max-width: 780px; }
+  h1 em { font-style: normal; color: var(--or); }
+  .hero-sub { font-size: 1.05rem; color: var(--texte-doux); line-height: 1.7; max-width: 520px; margin-bottom: 2.5rem; }
+  .stats-row { display: flex; gap: 3rem; margin-bottom: 3rem; flex-wrap: wrap; justify-content: center; }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--or); }
+  .stat-label { font-size: 0.82rem; color: var(--texte-doux); margin-top: 0.2rem; }
+  .btn-or { background: var(--or); color: var(--noir); padding: 1.1rem 2.5rem; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.3s, transform 0.2s; letter-spacing: 0.02em; }
+  .btn-or:hover { background: var(--or-clair); transform: translateY(-2px); }
+
+  .section { padding: 5rem 4rem; }
+  .section-tag { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--or); margin-bottom: 1rem; }
+  .section-title { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.8rem; }
+  .section-sub { color: var(--texte-doux); font-size: 0.95rem; max-width: 500px; line-height: 1.7; margin-bottom: 3rem; }
+
+  .etapes-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; }
+  .etape { padding: 2.5rem; border-right: 1px solid rgba(200,168,75,0.1); }
+  .etape:last-child { border-right: none; }
+  .etape-num { font-family: 'Syne', sans-serif; font-size: 3.5rem; font-weight: 800; color: rgba(200,168,75,0.12); line-height: 1; margin-bottom: 1rem; }
+  .etape-icon { font-size: 1.6rem; margin-bottom: 0.8rem; }
+  .etape h3 { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.6rem; }
+  .etape p { color: var(--texte-doux); font-size: 0.88rem; line-height: 1.6; }
+
+  /* HUBSPOT FORM WRAPPER */
+  .form-section { background: var(--gris); border-top: 1px solid rgba(200,168,75,0.1); }
+  .form-wrapper { max-width: 680px; margin: 0 auto; }
+  #hs-form-wrapper { margin-top: 1rem; }
+
+  /* Override HubSpot form styles to match dark theme */
+  #hs-form-wrapper .hs-form-field label { font-size: 0.8rem !important; letter-spacing: 0.08em !important; text-transform: uppercase !important; color: var(--texte-doux) !important; font-family: 'DM Sans', sans-serif !important; margin-bottom: 0.4rem !important; display: block; }
+  #hs-form-wrapper input[type="text"],
+  #hs-form-wrapper input[type="email"],
+  #hs-form-wrapper input[type="tel"],
+  #hs-form-wrapper textarea,
+  #hs-form-wrapper select { background: rgba(255,255,255,0.04) !important; border: 1px solid rgba(200,168,75,0.25) !important; color: var(--blanc) !important; padding: 0.9rem 1rem !important; font-family: 'DM Sans', sans-serif !important; font-size: 0.95rem !important; outline: none !important; width: 100% !important; border-radius: 0 !important; box-shadow: none !important; }
+  #hs-form-wrapper input[type="text"]:focus,
+  #hs-form-wrapper input[type="email"]:focus,
+  #hs-form-wrapper input[type="tel"]:focus,
+  #hs-form-wrapper textarea:focus,
+  #hs-form-wrapper select:focus { border-color: var(--or) !important; background: rgba(200,168,75,0.05) !important; }
+  #hs-form-wrapper select option { background: var(--gris); color: var(--blanc); }
+  #hs-form-wrapper .hs-button { background: var(--or) !important; color: var(--noir) !important; border: none !important; padding: 1.1rem 2.5rem !important; font-family: 'Syne', sans-serif !important; font-weight: 700 !important; font-size: 1rem !important; cursor: pointer !important; width: 100% !important; border-radius: 0 !important; letter-spacing: 0.02em !important; transition: background 0.3s !important; margin-top: 1rem !important; }
+  #hs-form-wrapper .hs-button:hover { background: var(--or-clair) !important; }
+  #hs-form-wrapper .hs-error-msgs { list-style: none !important; }
+  #hs-form-wrapper .hs-error-msgs li label { color: #e07070 !important; font-size: 0.78rem !important; text-transform: none !important; letter-spacing: 0 !important; }
+  #hs-form-wrapper .hs-form-field { margin-bottom: 1.2rem !important; }
+  #hs-form-wrapper .submitted-message { background: rgba(200,168,75,0.1); border: 1px solid var(--or); padding: 2rem; text-align: center; color: var(--or); font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; }
+  #hs-form-wrapper fieldset { max-width: 100% !important; border: none !important; padding: 0 !important; }
+  #hs-form-wrapper .form-columns-2 .hs-form-field { width: 48% !important; display: inline-block !important; margin-right: 2% !important; }
+  #hs-form-wrapper .form-columns-2 .hs-form-field:last-child { margin-right: 0 !important; }
+  #hs-form-wrapper .hs-richtext { color: var(--texte-doux) !important; font-size: 0.78rem !important; margin-top: 1rem !important; }
+
+  footer { background: var(--gris); padding: 2.5rem 4rem; border-top: 1px solid rgba(200,168,75,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-links { display: flex; gap: 2rem; list-style: none; }
+  .footer-links a { color: var(--texte-doux); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--or); }
+  footer p { color: var(--texte-doux); font-size: 0.8rem; }
+
+  #mentions-legales { display: none; background: var(--gris); border-top: 1px solid rgba(200,168,75,0.1); }
+  #mentions-legales h3 { font-family: 'Syne', sans-serif; color: var(--or); margin-bottom: 0.8rem; font-size: 1rem; letter-spacing: 0.05em; text-transform: uppercase; }
+  #mentions-legales p { color: var(--texte-doux); line-height: 1.8; font-size: 0.92rem; }
+  #mentions-legales a { color: var(--or); }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; } nav ul { display: none; }
+    .section { padding: 3.5rem 1.5rem; }
+    .etapes-grid { grid-template-columns: 1fr; }
+    .etape { border-right: none; border-bottom: 1px solid rgba(200,168,75,0.1); }
+    footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+    .stats-row { gap: 2rem; }
+    #hs-form-wrapper .form-columns-2 .hs-form-field { width: 100% !important; display: block !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#">Réno<span>Leads</span></a>
+  <ul>
+    <li><a href="#comment">Comment ça marche</a></li>
+    <li><a href="#formulaire">Déposer mon projet</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-tag">Service gratuit pour les particuliers</div>
+  <h1>Trouvez l'artisan <em>qu'il vous faut</em> en 48h</h1>
+  <p class="hero-sub">Décrivez votre projet de rénovation en 2 minutes. Nous vous mettons en contact avec des professionnels sérieux, disponibles et adaptés à votre budget — gratuitement.</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">48h</div><div class="stat-label">Délai de réponse moyen</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Gratuit pour vous</div></div>
+    <div class="stat"><div class="stat-num">0</div><div class="stat-label">Engagement requis</div></div>
+  </div>
+  <a href="#formulaire" class="btn-or">Décrire mon projet gratuitement →</a>
+</section>
+
+<section class="section" id="comment" style="background: var(--gris); border-top: 1px solid rgba(200,168,75,0.1);">
+  <div class="section-tag">Le processus</div>
+  <h2 class="section-title">Simple en 3 étapes</h2>
+  <p class="section-sub">De votre demande à la mise en contact avec un professionnel, tout se passe rapidement.</p>
+  <div class="etapes-grid">
+    <div class="etape">
+      <div class="etape-num">01</div><div class="etape-icon">📋</div>
+      <h3>Décrivez votre projet</h3>
+      <p>Type de travaux, localisation, délai. Notre formulaire capture tout en 2 minutes.</p>
+    </div>
+    <div class="etape">
+      <div class="etape-num">02</div><div class="etape-icon">🔍</div>
+      <h3>On trouve le bon pro</h3>
+      <p>Votre demande est transmise à des artisans qualifiés dans votre zone, disponibles et adaptés.</p>
+    </div>
+    <div class="etape">
+      <div class="etape-num">03</div><div class="etape-icon">🤝</div>
+      <h3>Vous êtes contacté(e)</h3>
+      <p>Le professionnel vous appelle directement pour convenir d'un rendez-vous et établir un devis.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section form-section" id="formulaire">
+  <div class="form-wrapper">
+    <div class="section-tag">Formulaire gratuit</div>
+    <h2 class="section-title">Décrivez votre projet</h2>
+    <p class="section-sub">Remplissez ce formulaire. Un professionnel vous contactera sous 48h — sans frais ni engagement.</p>
+    <div id="hs-form-wrapper"></div>
+    <p style="text-align:center; font-size:0.78rem; color:var(--texte-doux); margin-top:1rem;">🔒 Vos informations restent confidentielles et ne sont transmises qu'aux artisans partenaires sélectionnés.</p>
+  </div>
+</section>
+
+<section class="section" id="mentions-legales">
+  <div style="max-width:780px; margin:0 auto; display:flex; flex-direction:column; gap:2rem;">
+    <div class="section-tag">Informations légales</div>
+    <h2 class="section-title" style="font-size:1.8rem;">Mentions Légales & Politique de Confidentialité</h2>
+    <div><h3>1. Éditeur du site</h3><p>Louis Rondinaud — Auto-entrepreneur — Poitiers, France<br>Email : <a href="mailto:contact@renoleads.fr">contact@renoleads.fr</a></p></div>
+    <div><h3>2. Hébergement</h3><p>Netlify, Inc. — 44 Montgomery Street, Suite 300, San Francisco, CA 94104, États-Unis.</p></div>
+    <div><h3>3. Collecte des données (RGPD)</h3><p>Responsable : Louis Rondinaud. Données collectées : nom, prénom, email, téléphone, ville, description, délai. Finalité : mise en relation avec des artisans partenaires. Durée : 12 mois. Droits : <a href="mailto:contact@renoleads.fr">contact@renoleads.fr</a> — Réclamation : <a href="https://www.cnil.fr" target="_blank">www.cnil.fr</a></p></div>
+    <div><h3>4. Cookies</h3><p>Aucun cookie publicitaire. Seuls des cookies techniques peuvent être déposés.</p></div>
+    <div><h3>5. Responsabilité</h3><p>RénoLeads agit en intermédiaire de mise en relation et ne peut être tenu responsable des litiges entre particuliers et professionnels.</p></div>
+    <p style="color:var(--texte-doux);font-size:0.78rem;border-top:1px solid rgba(200,168,75,0.1);padding-top:1rem;">Dernière mise à jour : avril 2025</p>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">Réno<span>Leads</span></div>
+  <ul class="footer-links">
+    <li><a href="#comment">Comment ça marche</a></li>
+    <li><a href="#formulaire">Déposer mon projet</a></li>
+    <li><a href="#" onclick="toggleMentions();return false;">Mentions légales</a></li>
+  </ul>
+  <p>© 2025 RénoLeads — Louis Rondinaud</p>
+</footer>
+
+<script>
+  window.addEventListener('load', function() {
+    if (window.hbspt) {
+      hbspt.forms.create({
+        region: "eu1",
+        portalId: "148257446",
+        formId: "08a83d4f-01ff-48f9-9dd1-73f35c18dd5f",
+        target: "#hs-form-wrapper",
+        onFormSubmitted: function() {
+          document.querySelector('#hs-form-wrapper').scrollIntoView({behavior:'smooth'});
+        }
+      });
+    }
+  });
+
+  function toggleMentions() {
+    const s = document.getElementById('mentions-legales');
+    s.style.display = s.style.display === 'block' ? 'none' : 'block';
+    if (s.style.display === 'block') setTimeout(() => s.scrollIntoView({behavior:'smooth'}), 50);
+  }
+</script>
+</body>
+</html>
