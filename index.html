@@ -116,7 +116,7 @@
     transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
   }
   .service-card:hover { transform: translateY(-5px); border-color: var(--or); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-  .service-img { width: 100%; height: 180px; object-fit: cover; display: block; background: var(--gris-clair); }
+  .service-img { width: 100%; height: 240px; object-fit: contain; object-position: center; display: block; background: var(--gris-clair); }
   .service-img-placeholder { width: 100%; height: 180px; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; background: linear-gradient(135deg, #e8ecf0, #d0d8e4); }
   .service-body { padding: 1.2rem 1.5rem 1.5rem; }
   .service-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
@@ -324,14 +324,14 @@
       </div>
     </div>
     <div class="service-card">
-      <img class="service-img" src="charpente.jpg" alt="Toiture maison tuiles" onerror="this.style.background='#e8ecf0'">
+      <img class="service-img" src="charpente.jpg" alt="Toiture maison tuiles" style="object-fit:contain; height:240px;" onerror="this.style.background='#e8ecf0'">
       <div class="service-body">
         <h3>Toiture & Charpente</h3>
         <p>Réfection de toiture, zinguerie, isolation des combles. Des artisans spécialisés à votre service.</p>
       </div>
     </div>
     <div class="service-card">
-      <img class="service-img" src="peinture_revetement.jpg" alt="Mur peint propre intérieur maison" onerror="this.style.background='#e8ecf0'">
+      <img class="service-img" src="peinture_revetement.jpg" alt="Mur peint propre intérieur maison" style="object-fit:contain; height:240px;" onerror="this.style.background='#e8ecf0'">
       <div class="service-body">
         <h3>Peinture & Revêtements</h3>
         <p>Peinture intérieure et extérieure, papier peint, parquet, carrelage. Un résultat impeccable garanti.</p>
